@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Neo4jModule, Neo4jConfig } from '@nhogs/nestjs-neo4j'
+import { ItemsModule } from './items/items.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,6 +23,7 @@ import { Neo4jModule, Neo4jConfig } from '@nhogs/nestjs-neo4j'
       }),
       global: true,
     }),
+    ItemsModule,
 
   ],
   controllers: [AppController],
