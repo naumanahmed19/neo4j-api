@@ -20,11 +20,13 @@ let ItemsService = class ItemsService {
         let response = await this.neo4jService.run({
             cypher: 'MATCH (n:data) RETURN n',
         });
-        let results = response.records.map((record) => record.get('n').properties);
+        let results = response.records.map((record) => {
+            const item = {
+                ...record.get('n').properties,
+            };
+            return item;
+        });
         return results;
-    }
-    findOne(id) {
-        return `This action returns a #${id} item`;
     }
 };
 exports.ItemsService = ItemsService;
